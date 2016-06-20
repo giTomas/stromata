@@ -1,0 +1,43 @@
+
+
+<div class="l-1-3">
+{{#each items1}}
+  <a href="/articles/{{_id}}"><h2>{{title}}</h2></a>
+  <a href="/authors/{{author.authorId}}"><h3>{{author.firstName}} {{author.lastName}}</h3></a>
+  <h3>{{date}}</h3>
+  <a href="{{category}}"><h3>{{category}}</h3></a>
+  <!-- {{#each body }} -->
+      <!-- <p> {{p}} </p> -->
+  <!-- {{/each}} -->
+  <p>{{ body.0.p }}</p>
+{{/each}}
+
+</div>
+
+<div class="l-1-3">
+{{#each items2}}
+  <a href="/arts/{{_id}}"><h2>{{title}}</h2></a>
+  <a href="/authors/{{author.authorId}}"><h3>{{author.firstName}} {{author.lastName}}</h3></a>
+  <h3>{{date}}</h3>
+  <a href="{{category}}"><h3>{{category}}</h3></a>
+  <!-- {{#each body }} -->
+      <!-- <p> {{p}} </p> -->
+  <!-- {{/each}} -->
+  <p>{{ body.0.p }}</p>
+  <!-- <a href="/arts/{{_id}}">articles</a> -->
+{{/each}}
+</div>
+
+<div class="l-1-3">
+{{#each items3}}
+  <a href="/books/{{_id}}"><h2>{{title}}</h2></a>
+  <a href="/authors/{{author.authorId}}"><h3>{{author.firstName}} {{author.lastName}}</h3></a>
+  <h3>{{date}}</h3>
+  <h3>{{category}}</h3>
+  <!-- {{#each body }} -->
+      <!-- <p> {{p}} </p> -->
+  <!-- {{/each}} -->
+  <p>{{ body.0.p }}</p>
+  <a href="/books/{{_id}}">articles</a>
+{{/each}}
+</div>

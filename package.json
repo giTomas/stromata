@@ -1,0 +1,28 @@
+{
+  "name": "Stromata",
+  "version": "1.0.0",
+  "description": "A simple app with express routing",
+  "main": "server.js",
+  "author": "giTo",
+  "repositiory": {
+    "type": "git",
+    "url": "https://github.com/giTomas/stromata.git"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.5.0",
+    "nodemailer": "^2.4.2",
+    "nodemailer-smtp-transport": "^2.5.0",
+    "pug": "^2.0.0-beta3"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-sass": "^2.3.2"
+  }
+}
