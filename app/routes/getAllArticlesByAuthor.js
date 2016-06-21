@@ -4,20 +4,27 @@ const mongoose   = require('mongoose');
 const Article    = require('../models/article');
 const Book       = require('../models/book');
 const Art        = require('../models/art');
+const helpers    = require('../helpers/helpers');
 mongoose.Promise = require('bluebird');
 
+
 module.exports = (req, res) => {
-  const limit    = 3;
-  const promise1 = Article.find({}).limit(limit).exec();
-  const promise2 = Art.find({}).limit(limit).exec();
-  const promise3 = Book.find({}).limit(limit).exec();
-  const fns = [promise1, promise2, promise3];
+  const auth     = req.params.id;
+  const promise  = Article.find( { "author.authorId" : auth } ).exec();
+  const promise2 = Art.find( { "author.authorId" : auth } ).exec();
+  const promise3 = Book.find({ "author.authorId" : auth} ).exec();
+  const fns      = [promise, promise2, promise3];
 
   Promise.all(fns)
-    .then( (articles) => {   // return array articles = [] as value
-      res.render('index', { pageTitle: "Index", items1: articles[0], items2: articles[1], items3: articles[2] })
+    .then( ( articles ) => {   // return array articles = [] as value of promise
+      // TODO merge  arrays in array articles
+      return helpers.arrayMergeItems(articles);
     })
-    .catch( (err) => {
+    .then( ( artCombined ) => {
+      // console.log(artCombined);
+      res.render('articlesByAuthor', { pageTitle: "all", items: artCombined  });
+    })
+    .catch( ( err ) => {
       console.log(err);
     });
 };

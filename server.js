@@ -14,6 +14,8 @@ const ip         = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 const database   = require("./config/database");
 const routes     = require('./app/index');
 
+
+//load/database.js--------------------------------------------------------------
 mongoose.connect( database.url , (err, res) => {
   if (err) {
     console.log("Connection to " + database.url + " failed " + err);

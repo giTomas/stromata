@@ -1,17 +1,20 @@
-const routes         = require('express').Router();
+"use strict";
 
-const getArticleById = require('./routes/getArticleById')
-const getArtById     = require('./routes/getArtById')
-const getBookById    = require('./routes/getBookById')
-const getAll         = require('./routes/getAll')
-const getAllArticles = require('./routes/getAllArticles')
+const routes                 = require('express').Router();
+const getArticleById         = require('./routes/getArticleById');
+const getArtById             = require('./routes/getArtById');
+const getBookById            = require('./routes/getBookById');
+const getAll                 = require('./routes/getAll');
+const getAllArticles         = require('./routes/getAllArticles');
+const getAllArticlesByAuthor = require('./routes/getAllArticlesByAuthor');
 // mongoose.connect('mongodb://localhost:/stromata');
 
 routes.get('/', getAll);
 
+
 routes.get('/articles/:id', getArticleById)
 
-routes.get('/arts/:id', getArtById)
+routes.get('/art/:id', getArtById)
 
 routes.get('/books/:id', getBookById)
 
@@ -20,6 +23,14 @@ routes.get('/articles', getAllArticles);
 routes.get('/authors/:id', (req, res) => {
   console.log('authors ' + req.params.id )
 });
+
+//all articles by particular author
+/*
+routes.get('/articles/by/:id', (req, res) => {
+  console.log('articles by ' + req.params.id);
+})*/
+
+routes.get('/articles/by/:id', getAllArticlesByAuthor)
 
 /*
 routes.get('/articles', (req, res) => {

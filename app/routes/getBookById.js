@@ -1,3 +1,5 @@
+"use strict";
+
 const mongoose   = require('mongoose');
 const Book       = require('../models/book');
 mongoose.Promise = require('bluebird');

@@ -1,9 +1,8 @@
+"use strict";
+
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Book', {
-  title: String,
-  date: String,
-  category: String,
+module.exports = mongoose.model('Author', {
   body: [{ p: String }],
   author: {firstName: String, lastName: String, authorId: String}
 });
