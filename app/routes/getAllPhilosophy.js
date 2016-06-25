@@ -1,14 +1,14 @@
 "use strict";
 
 const mongoose   = require('mongoose');
-const Article    = require('../models/article');
+const Philosophy = require('../models/philosophy');
 mongoose.Promise = require('bluebird');
 
 module.exports = (req, res) => {
-  const promise = Article.find( 'articles').exec();
+  const promise = Philosophy.find( 'articles').exec();
 
   promise.then( (articles) => {
-    res.render('index', { pageTitle: "Index", items1: articles })
+    res.render('articles', { pageTitle: "Index", items: articles })
   })
   .catch( (err) => {
     console.log(err);

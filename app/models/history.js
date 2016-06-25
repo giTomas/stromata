@@ -2,11 +2,12 @@
 
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Article', {
+// const historySchema =()'';
+module.exports = mongoose.model('History', {
   title: String,
   date: String,
   category: String,
-  body: [{ p: String }],
+  body: [{ p: String, h: String }],
   author: {firstName: String, lastName: String, authorId: String},
-  comments: [{body: String, firstName: String, lastName: String, email: String}]
+  comments: [{body: String, name: String, date: Date }]
 });

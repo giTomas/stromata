@@ -1,0 +1,40 @@
+// .c-article
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+.c-article__title
+  font-size: $font-size-3
+  margin-bottom: $vertical-rhytm / 2
+
+.c-article__text
+  margin-bottom: $vertical-rhytm
+
+.c-article__subtitle
+  font-size: $font-size-1
+  color: black
+  margin-bottom: $vertical-rhytm / 4
+
+.c-article__text:last-of-type
+  margin-bottom: $vertical-rhytm * 2
+
+.c-article__comments, .c-article__btn
+  max-width: 400px
+  margin: 0 auto
+
+.c-article__btn
+  text-align: center
+  cursor: pointer
+  border: 1px solid $blue
+  color: $blue
+  padding: ($vertical-rhytm / 2) 0
+  margin-bottom: $vertical-rhytm * 2
+  transition: all 0.22s ease-in-out
+  &:hover
+    color: white
+    background-color: $blue
+
+//.c-article__category
+  @include link-underline(#fff, $blue, bold)
+  display: inline
+  -bottom: $vertical-rhytm

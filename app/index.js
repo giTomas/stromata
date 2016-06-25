@@ -1,114 +1,77 @@
 "use strict";
 
 const routes                 = require('express').Router();
-const getArticleById         = require('./routes/getArticleById');
-const getArtById             = require('./routes/getArtById');
-const getBookById            = require('./routes/getBookById');
-const getAll                 = require('./routes/getAll');
-const getAllArticles         = require('./routes/getAllArticles');
+const getHistoryById         = require('./routes/getHistoryById');
+const getPhilosophyById      = require('./routes/getPhilosophyById');
+const getLiteratureById      = require('./routes/getLiteratureById');
+const getAllIndex            = require('./routes/getAllIndex');
+const getAllHistory          = require('./routes/getAllHistory');
+const getAllLiterature       = require('./routes/getAllLiterature');
+const getAllPhilosophy       = require('./routes/getAllPhilosophy');
 const getAllArticlesByAuthor = require('./routes/getAllArticlesByAuthor');
-// mongoose.connect('mongodb://localhost:/stromata');
+const getAuthor              = require('./routes/getAuthor');
+const getAllAuthors          = require('./routes/getAllAuthors');
+const getAllImages           = require('./routes/getAllImages');
+const addComment             = require('./routes/addComment');
+const updateComments         = require('./routes/updateComments');
 
-routes.get('/', getAll);
+//get first 3 documents from all articles collections
+// TODO  add get first 3 images from img collection
+routes.get('/', getAllIndex);
+
+// get particular article from history collection
+routes.get('/dejiny/:id', getHistoryById)
+
+// TODO post comment to article
+//get particular article from philosophy collection
+routes.get('/filozofia/:id', getPhilosophyById)
+
+//get particular article from literature collection
+routes.get('/literatura/:id', getLiteratureById)
+
+//get all articles from history collection
+routes.get('/dejiny', getAllHistory);
+
+routes.get('/literatura', getAllLiterature);
+
+routes.get('/filozofia', getAllPhilosophy);
+
+//get particular author
+routes.get('/autori/:id', getAuthor);
+
+//get all authors
+routes.get('/autori', getAllAuthors);
+
+//get articles by particular author
+routes.get('/articles/by/:id', getAllArticlesByAuthor);
+
+//get all images for gallery
+routes.get('/images', getAllImages);
 
 
-routes.get('/articles/:id', getArticleById)
+//Managing CLIENT SIDE routes---------------------------------------------------
 
-routes.get('/art/:id', getArtById)
+routes.get('/Filozofia/comments/:id', (req, res) => res.json({"say":"hello"}));
 
-routes.get('/books/:id', getBookById)
-
-routes.get('/articles', getAllArticles);
-
-routes.get('/authors/:id', (req, res) => {
-  console.log('authors ' + req.params.id )
+routes.post('/Filozofia/comments/:id', (req, res) => {
+  console.log(req.body);
+  res.send("OK");
 });
 
-//all articles by particular author
+routes.get('/literatura/comments/:id', (req, res) => res.json({"say":"hello"}));
+
+routes.post('/literatura/comments/:id', (req, res) => {
+  console.log(req.body);
+  res.send("OK");
+});
+
+routes.get('/dejiny/comments/:id', updateComments );
+routes.post('/dejiny/comments/:id', addComment);
+
 /*
-routes.get('/articles/by/:id', (req, res) => {
-  console.log('articles by ' + req.params.id);
-})*/
-
-routes.get('/articles/by/:id', getAllArticlesByAuthor)
-
-/*
-routes.get('/articles', (req, res) => {
-  const promise = Article.find('articles').exec();
-
-  promise.then( (articles) => {
-    res.render('index', { pageTitle: "Index", items: articles })
-  })
-  .catch( (err) => {
-    console.log(err);
-  })
+routes.post('/dejiny/comments/:id', (req, res) => {
+  console.log(req.body.userName);
+  res.send("OK");
 });*/
-
-
-/*
-routes.get('/', (req, res) => {
-  const promise  = Article.find('articles').exec();
-  const promise2 = Art.find('articles').exec();
-  const promise3 = Book.find('articles').exec();
-  const fns = [promise, promise2, promise3];
-
-  Promise.all(fns).then( (articles) => {
-
-    res.render('two', { pageTitle: "Index", items1: articles[0], items2: articles[1], items3: articles[2] })
-  })
-  .catch( (err) => {
-    console.log(err);
-  })
-});*/
-/*
-routes.get('/', (req, res) => {
-    Article.find('articles', function(err, articles){
-      if (err)
-        res.send(err);
-          var first2 = [];
-          for (var i = 0; i < 3; i++ ) {
-            first2.push(articles[i]);
-          }
-          // console.log(articles);
-
-
-          res.render('index', { pageTitle: "Index", items: articles })
-
-  });
-
-});*/
-/*
-function getArticleById(req, res) {
-  Art.findById(req.params.id, function(err, article) {
-  if(err)
-    res.send(err);
-    res.render('article', { item: article })
-})
-}
-
-routes.get('/articles/art:id', getArticleById);*/
-
-
-/*
-routes.get('/art/:id', (req, res) => {
-
-  Art.findById(req.params.id, function(err, article) {
-
-    if(err)
-      res.send(err);
-      res.render('article', { item: article })
-  })
-})*/
-/*
-routes.get('/books/:id', (req, res) => {
-
-  Book.findById(req.params.id, function(err, article) {
-
-    if(err)
-      res.send(err);
-      res.render('article', { item: article })
-  })
-})*/
-
 
 module.exports = routes;

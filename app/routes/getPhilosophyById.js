@@ -1,11 +1,11 @@
 "use strict";
 
 const mongoose   = require('mongoose');
-const Art        = require('../models/art');
+const Philosophy = require('../models/philosophy');
 mongoose.Promise = require('bluebird');
 
 module.exports = (req, res) => {
-const promise = Art.findById(req.params.id).exec();
+const promise = Philosophy.findById(req.params.id).exec();
 
   promise.then( (article) => {
     res.render('article', { item: article });

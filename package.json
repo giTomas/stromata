@@ -12,11 +12,11 @@
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "express-formidable": "^0.1.2",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.5.0",
     "nodemailer": "^2.4.2",
-    "nodemailer-smtp-transport": "^2.5.0",
-    "pug": "^2.0.0-beta3"
+    "nodemailer-smtp-transport": "^2.5.0"
   },
   "license": "MIT",
   "devDependencies": {

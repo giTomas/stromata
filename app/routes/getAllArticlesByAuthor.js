@@ -1,28 +1,28 @@
 "use strict";
 
 const mongoose   = require('mongoose');
-const Article    = require('../models/article');
-const Book       = require('../models/book');
-const Art        = require('../models/art');
+const History    = require('../models/history');
+const Literature = require('../models/literature');
+const Philosophy = require('../models/philosophy');
 const helpers    = require('../helpers/helpers');
 mongoose.Promise = require('bluebird');
 
 
 module.exports = (req, res) => {
   const auth     = req.params.id;
-  const promise  = Article.find( { "author.authorId" : auth } ).exec();
-  const promise2 = Art.find( { "author.authorId" : auth } ).exec();
-  const promise3 = Book.find({ "author.authorId" : auth} ).exec();
+  const promise  = History.find( { "author.authorId" : auth } ).exec();
+  const promise2 = Philosophy.find( { "author.authorId" : auth } ).exec();
+  const promise3 = Literature.find({ "author.authorId" : auth} ).exec();
   const fns      = [promise, promise2, promise3];
 
   Promise.all(fns)
     .then( ( articles ) => {   // return array articles = [] as value of promise
-      // TODO merge  arrays in array articles
+      // merge  arrays in array arCombined
       return helpers.arrayMergeItems(articles);
     })
     .then( ( artCombined ) => {
       // console.log(artCombined);
-      res.render('articlesByAuthor', { pageTitle: "all", items: artCombined  });
+      res.render('articles', { pageTitle: "all", items: artCombined  });
     })
     .catch( ( err ) => {
       console.log(err);

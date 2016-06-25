@@ -1,16 +1,16 @@
 "use strict";
 
 const mongoose   = require('mongoose');
-const Article    = require('../models/article');
+const History    = require('../models/history');
 mongoose.Promise = require('bluebird');
 
 
 
 module.exports = (req, res) => {
-const promise = Article.findById(req.params.id).exec();
+const promise = History.findById(req.params.id).exec();
 
   promise.then( (article) => {
-    res.render('article', { item: article })
+    res.render('article', { item: article });;
     })
     .catch( (err) =>{
       console.log(err);

@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Art', {
+module.exports = mongoose.model('Philosophy', {
   title: String,
   date: String,
   category: String,

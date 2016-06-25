@@ -1,8 +1,60 @@
-<div class="l-1-3">
-<h2>{{item.title}}</h2>
-<h3>{{item.date}}</h3>
-<h3>{{item.category}}</h3>
-{{#each item.body}}
- <p>{{ p }}</p>
-{{/each}}
+
+<div class="c-article">
+  <!-- <div class="l-1-3"> -->
+  <h2 class="c-article__title">{{item.title}}</h2>
+  <!-- <h3 class="c-article__date">{{item.date}}</h3> -->
+  <a href="autori/{{item.author.authorId}}">
+    <h3 class="c-article__author">{{item.author.firstName}} {{item.author.lastName}}</h3>
+  </a>
+  <a class="c-section__link" href="/{{item.category}}"><h3 class="c-section__title">{{item.category}}</h3></a>
+  {{#each item.body }}
+      <h3 class="c-article__subtitle">{{ h }}</h3>
+      <p class="c-article__text">{{ p }}</p>
+  {{/each}}
+  <div id="js-show-hide" class="c-article__btn" data-url="{{item._id}}">
+    <span class="js-info" >Ukazat Komentare</span>
+    <span class="js-info is-hidden">Skryt Komentare</span>
+  </div>
+  <div id="js-comments" class="c-article__comments is-hidden">
+    <div id="js-add">
+
+
+    <!-- {{#each item.comments}} -->
+      <!-- <div class="c-comment"> -->
+        <!-- <header class="c-comment__header"> -->
+          <!-- <p class="c-comment__name">{{name}}</p> -->
+          <!-- <p class="c-comment__date">{{ date }}</p> -->
+        <!-- </header> -->
+        <!-- <p class="c-comment__body">{{body}}</p> -->
+      <!-- </div> -->
+    <!-- {{/each}} -->
+
+   </div>
+    <form class="c-form" id="js-comment">
+      <div class="c-form__field">
+        <label class="c-form__label" for="js-name">Meno</label>
+        <input class="c-form__name" type="text" name="userName">
+      </div>
+
+      <div class="c-form__field">
+        <label class="c-form__label" for="js-commment">Komentar</label>
+        <textarea class="c-form__text" name="userComment"></textarea>
+      </div>
+
+      <!-- <input type="submit" value="Poslat komentar"> -->
+
+    </form>
+    <div class="c-article__btn" id="js-btn" data-url="{{item._id}}">Pridat</div>
+  </div>
+  <!-- </div> -->
 </div>
+
+<script id="js-tmp" type="text/x-handlebars-template">
+  \{{#each this}}
+    <div class="c-comment">
+        <p class="c-comment__name">\{{ name }}</p>
+        <p class="c-comment__date">\{{ date }}</p>
+        <p class="c-comment__body">\{{ body }}</p>
+    </div>
+  \{{/each}}
+</script>

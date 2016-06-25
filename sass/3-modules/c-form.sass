@@ -1,0 +1,40 @@
+.c-form
+  max-width: 400px
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-end
+  margin-bottom: $vertical-rhytm
+  // margin-top: $vertical-rhytm * 2
+
+.c-form__field
+  width: 100%
+  position: relative
+  background: white
+  border: 1px solid $basic-font-color
+
+.c-form__field:first-of-type
+  border-bottom: none
+
+
+
+
+.c-form__label
+  opacity: 0.3
+  position: absolute
+  font-weight: bold
+  top: 1.1em
+  left: 0.25em
+  // &:focus
+    opacity: 0
+
+.c-form__name,
+.c-form__text
+  width: 100%
+  border: 0
+  padding: 1.2rem
+  background: #eee
+
+  &:focus
+    outline: 0
+    background-color: white
