@@ -32,7 +32,6 @@ app.set('view engine', 'handlebars');
 // app.enable('view cache');
 app.use( '/public', express.static(path.join(__dirname + '/public')));
 
-
 //connect ROUTES to app------------------------------------------------------------------------
 app.use('/', routes)
 

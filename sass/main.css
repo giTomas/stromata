@@ -386,5 +386,45 @@ h1 {
 .c-comment__body {
   padding: 0.7rem; }
 
+.c-user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.c-user__register, .c-user__login {
+  margin-right: 0.7rem;
+  text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2196f3), to(#2196f3));
+  background-image: -webkit-linear-gradient(#2196f3, #2196f3);
+  background-image: linear-gradient(#2196f3, #2196f3);
+  background-size: 1px 1px;
+  background-repeat: repeat-x;
+  background-position: 0% 95%;
+  color: #2196f3;
+  text-decoration: none;
+  cursor: pointer; }
+  .c-user__register::-moz-selection, .c-user__login::-moz-selection {
+    text-shadow: 0.03em 0 bold, -0.03em 0 bold, 0 0.03em bold, 0 -0.03em bold, 0.06em 0 bold, -0.06em 0 bold, 0.09em 0 bold, -0.09em 0 bold, 0.12em 0 bold, -0.12em 0 bold, 0.15em 0 bold, -0.15em 0 bold;
+    background: bold; }
+  .c-user__register::selection, .c-user__login::selection {
+    text-shadow: 0.03em 0 bold, -0.03em 0 bold, 0 0.03em bold, 0 -0.03em bold, 0.06em 0 bold, -0.06em 0 bold, 0.09em 0 bold, -0.09em 0 bold, 0.12em 0 bold, -0.12em 0 bold, 0.15em 0 bold, -0.15em 0 bold;
+    background: bold; }
+  .c-user__register::-moz-selection, .c-user__login::-moz-selection {
+    text-shadow: 0.03em 0 bold, -0.03em 0 bold, 0 0.03em bold, 0 -0.03em bold, 0.06em 0 bold, -0.06em 0 bold, 0.09em 0 bold, -0.09em 0 bold, 0.12em 0 bold, -0.12em 0 bold, 0.15em 0 bold, -0.15em 0 bold;
+    background: bold; }
+  .c-user__register *,
+  .c-user__register *:after, .c-user__register:after,
+  .c-user__register *:before, .c-user__register:before, .c-user__login *,
+  .c-user__login *:after, .c-user__login:after,
+  .c-user__login *:before, .c-user__login:before {
+    text-shadow: none; }
+  .c-user__register:visited, .c-user__login:visited {
+    color: #2196f3; }
+
 .is-hidden {
   display: none; }

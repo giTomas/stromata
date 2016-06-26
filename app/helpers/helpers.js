@@ -28,7 +28,7 @@ exports.arrayMergeItems = (arr) => {
 };*/
 
 // change iso date to local string in comments - not very pure
-exports.commentsDatetoLocalSting = (arr) => {
+exports.commentsDatetoLocaleString = (arr) => {
   // const arr1 = arr.comments;
   // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
 
@@ -41,7 +41,7 @@ exports.commentsDatetoLocalSting = (arr) => {
   });
 }
 
-exports.commentsDatetoLocalSting2 = (arr) => {
+exports.commentsDatetoLocaleString2 = (arr) => {
   // const arr1 = arr.comments;
   // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
   return arr.comments.map( (obj) => {

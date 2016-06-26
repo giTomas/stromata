@@ -1,9 +1,9 @@
 "use strict";
 
-const mongoose   = require('mongoose');
-const History    = require('../models/history');
-mongoose.Promise = require('bluebird');
-const helpers    = require('../helpers/helpers');
+const mongoose     = require('mongoose');
+const History      = require('../models/history');
+mongoose.Promise   = require('bluebird');
+const dateToLocale = require('../helpers/helpers').commentsDatetoLocaleString2;
 
 
 module.exports = (req, res) => {
@@ -14,7 +14,7 @@ module.exports = (req, res) => {
 
   promise
     .then(  ()         => History.findById(req.params.id).exec())
-    .then(  (article)  => helpers.commentsDatetoLocalSting2(article))
+    .then(  (article)  => dateToLocale(article))
     .then(  (comments) => res.render( 'comments', { item: comments,  layout: false }))
     .catch( (err)      => console.log(err))
 };

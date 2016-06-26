@@ -12,7 +12,7 @@ module.exports = (req, res) => {
   const promise1 = History.find({}).limit(limit).exec();
   const promise2 = Philosophy.find({}).limit(limit).exec();
   const promise3 = Literature.find({}).limit(limit).exec();
-  // TODO get first img from img collection
+  // TODO get first imgs from img collection
   const fns = [promise1, promise2, promise3];
 
   Promise.all(fns)
@@ -21,9 +21,7 @@ module.exports = (req, res) => {
       // console.log(articles[0]);
       res.render('index', { pageTitle: "Index", items1: articles[0], items2: articles[1], items3: articles[2] })
     })
-    .catch( (err) => {
-      console.log(err);
-    });
+    .catch( (err) => res.send(err));
 };
 
 /*

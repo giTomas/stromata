@@ -48,7 +48,6 @@ routes.get('/articles/by/:id', getAllArticlesByAuthor);
 //get all images for gallery
 routes.get('/images', getAllImages);
 
-
 //Managing CLIENT SIDE routes---------------------------------------------------
 
 routes.get('/Filozofia/comments/:id', (req, res) => res.json({"say":"hello"}));
@@ -59,6 +58,8 @@ routes.post('/Filozofia/comments/:id', (req, res) => {
 });
 
 routes.get('/literatura/comments/:id', (req, res) => res.json({"say":"hello"}));
+
+routes.get('/literatura/:id1/:id2', (req, res) => console.log( "id1 : " + req.params.id1 + ' ' + "id2 : " + req.params.id2 ));
 
 routes.post('/literatura/comments/:id', (req, res) => {
   console.log(req.body);
