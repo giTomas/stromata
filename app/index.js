@@ -12,12 +12,23 @@ const getAllArticlesByAuthor = require('./routes/getAllArticlesByAuthor');
 const getAuthor              = require('./routes/getAuthor');
 const getAllAuthors          = require('./routes/getAllAuthors');
 const getAllImages           = require('./routes/getAllImages');
-const addComment             = require('./routes/addComment');
-const updateComments         = require('./routes/updateComments');
+const addCommentHistory      = require('./routes/addCommentHistory');
+const addCommentPhilosophy   = require('./routes/addCommentPhilosophy');
+const addCommentLiterature   = require('./routes/addCommentLiterature');
+const showCommentsHistory    = require('./routes/showCommentsHistory');
+const showCommentsPhilosophy = require('./routes/showCommentsPhilosophy');
+const showCommentsLiterature = require('./routes/showCommentsLiterature');
+// const user                   = require('./models/user');
+//passport + passport helpers
+const passport = require('passport');     
+const check    = require('./middleware/check');
 
 //get first 3 documents from all articles collections
 // TODO  add get first 3 images from img collection
 routes.get('/', getAllIndex);
+
+// TODO about
+routes.get('/o-stranke', getAllIndex);
 
 // get particular article from history collection
 routes.get('/dejiny/:id', getHistoryById)
@@ -42,7 +53,7 @@ routes.get('/autori/:id', getAuthor);
 //get all authors
 routes.get('/autori', getAllAuthors);
 
-//get articles by particular author
+//get articles by particular author add view
 routes.get('/articles/by/:id', getAllArticlesByAuthor);
 
 //get all images for gallery
@@ -50,29 +61,42 @@ routes.get('/images', getAllImages);
 
 //Managing CLIENT SIDE routes---------------------------------------------------
 
-routes.get('/Filozofia/comments/:id', (req, res) => res.json({"say":"hello"}));
+routes.get('/Filozofia/comments/:id', showCommentsPhilosophy);
+routes.post('/Filozofia/comments/:id', addCommentPhilosophy);
 
-routes.post('/Filozofia/comments/:id', (req, res) => {
-  console.log(req.body);
-  res.send("OK");
+routes.get('/literatura/comments/:id', showCommentsLiterature);
+routes.post('/literatura/comments/:id', addCommentLiterature);
+
+routes.get('/Dejiny/comments/:id', showCommentsHistory );
+routes.post('/Dejiny/comments/:id', addCommentHistory);
+
+//REGISTRATION------------------------------------------------------------------
+routes.get('/login', (req, res) => res.render('login', { pageTitle: "index", user: req.user}));
+
+routes.get('/register', (req, res) => res.render('signup', { pageTitle: "index", user: req.user}));
+
+routes.post('/singup', passport.authenticate('local-signup', {
+    successRedirect  : '/',
+    failureRedirect : '/register',
+    // failureFlash    : true
+}));
+
+routes.post('/login', passport.authenticate('local-login', {
+    successRedirect  : '/',
+    failureRedirect : '/login',
+    // failureFlash    : true
+}));
+
+routes.get('/hidden', check, (req, res) => res.render('hidden', { pageTitle: "hidden", user: req.user}));
+
+routes.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
-routes.get('/literatura/comments/:id', (req, res) => res.json({"say":"hello"}));
+// test
 
 routes.get('/literatura/:id1/:id2', (req, res) => console.log( "id1 : " + req.params.id1 + ' ' + "id2 : " + req.params.id2 ));
 
-routes.post('/literatura/comments/:id', (req, res) => {
-  console.log(req.body);
-  res.send("OK");
-});
-
-routes.get('/dejiny/comments/:id', updateComments );
-routes.post('/dejiny/comments/:id', addComment);
-
-/*
-routes.post('/dejiny/comments/:id', (req, res) => {
-  console.log(req.body.userName);
-  res.send("OK");
-});*/
 
 module.exports = routes;

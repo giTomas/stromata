@@ -45,6 +45,8 @@ exports.commentsDatetoLocaleString2 = (arr) => {
   // const arr1 = arr.comments;
   // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
   return arr.comments.map( (obj) => {
-    return {name: obj.name, body: obj.body, date: obj.date.toLocaleString('sk-u-nu-latn-ca-gregory')};
+    return { name: obj.name,
+             body: obj.body,
+             date: obj.date.toLocaleString('sk-u-nu-latn-ca-gregory')};
   });
 }

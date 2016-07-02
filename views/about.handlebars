@@ -30,26 +30,21 @@
     <!-- {{/each}} -->
 
    </div>
-
-
-    <form class="c-form" id="js-comment" data-url="{{item._id}}" data-user="user">
-      
+    <form class="c-form" id="js-comment">
       <div class="c-form__field">
-        <label class="c-form__label" for="userName">Meno</label>
-        <input class="c-form__name" type="text" name="userName" required>
+        <label class="c-form__label" for="js-name">Meno</label>
+        <input class="c-form__name" type="text" name="userName">
       </div>
 
       <div class="c-form__field">
-        <label class="c-form__label" for="userCommment">Komentar</label>
-        <textarea class="c-form__text" name="userComment" required></textarea>
+        <label class="c-form__label" for="js-commment">Komentar</label>
+        <textarea class="c-form__text" name="userComment"></textarea>
       </div>
 
-      <input class="c-article__btn" id="js-btn" type="submit" value="Poslat komentar">
+      <!-- <input type="submit" value="Poslat komentar"> -->
+
     </form>
-
-      <!-- <p>Ak chcete pridat komentar je potrebne sa prihlasit, alebo registrovat</p> -->
-
-    <!-- <div class="c-article__btn" id="js-btn" data-url="{{item._id}}">Pridat</div> -->
+    <div class="c-article__btn" id="js-btn" data-url="{{item._id}}">Pridat</div>
   </div>
   <!-- </div> -->
 </div>

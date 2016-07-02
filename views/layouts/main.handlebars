@@ -9,10 +9,17 @@
 </head>
 
 <body class="l-site">
-  <div class="c-user">
-    <div id="js-user-login" class="c-user__login">Prihlasit</div>
-    <div id="js-user-register" class="c-user__register">Registrovat</div>
-  </div>
+
+  {{#if user}}
+    <div class="c-user">
+        <div> Welcome {{user.username}}!</div> <a href="logout">Odhlasit</a>
+    </div>
+  {{else}}
+    <div class="c-user">
+      <div id="js-signup-open" class="c-user__login">Prihlasit</div>
+      <div id="js-login-open" class="c-user__register">Registrovat</div>
+    </div>
+  {{/if}}
   <div class="l-site__content ">
     <header class="c-header">
       <!-- <div class="c-header__logo"> -->
@@ -28,11 +35,11 @@
     <div class="c-nav">
       <div class="c-nav__ornaments">
       </div>
-      <nav class=c-nav__navigation>
-        <a class="c-nav__link" href="/">Úvod</a>
-        <a class="c-nav__link" href="/autori">Autori</a>
-        <a class="c-nav__link" href="/o-stranke">O stránke</a>
-      </nav>
+        <nav class=c-nav__navigation>
+          <a class="c-nav__link" href="/">Úvod</a>
+          <a class="c-nav__link" href="/autori">Autori</a>
+          <a class="c-nav__link" href="/o-stranke">O stránke</a>
+        </nav>
       <div class="c-nav__ornaments">
       </div>
     </div>
@@ -40,15 +47,90 @@
         {{{ body }}}
 
   </div>
-  <div id="js-register" class="c-register"></div>
-  <div id="js-login" class="c-login"></div>
+
+  <footer class="c-footer">
+  </footer>
+
+
+  <div class="c-signup__container" id="js-signup-container" style="display: none">
+    <form class="c-signup__form" id="js-singup" data-url="url" data-username="user">
+      <div class="c-signup__close" id="js-signup-close">
+        <svg fill="#FFFFFF" height="46" viewBox="0 0 24 24" width="46" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          <path d="M0 0h24v24H0z" fill="none"></path>
+        </svg>
+      </div>
+      <div class="c-signup__field">
+        <input type="text" name="username" required>
+        <label for="user">Uživateľské meno:</label>
+      </div>
+      <div class="c-signup__messages">
+        <div class="c-signup__message" id="js-username-used">
+          <svg fill="#8b0000" height="20" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+          <p>Uživatelské meno je už zaregisrované</p>
+        </div>
+      </div>
+      <div class="c-signup__field">
+        <input type="password" name="password" required>
+        <label for="password">Heslo:</label>
+      </div>
+      <div class="c-signup__field">
+        <input type="password" name="passwordrepeat" required>
+        <label for="passwordrepeat">Zopakovať heslo:</label>
+      </div>
+      <div class="c-signup__messages">
+        <div class="c-signup__message" id="js-password-invalid">
+          <svg fill="#8b0000" height="20" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+          <p>Zadané heslá sa nezhodujú</p>
+        </div>
+      </div>
+      <input type="submit" value="Registrovať">
+    </form>
+  </div>
+  <div class="c-login__container" id="js-login-container" style="display: none">
+    <form class="c-login__form" id="js-login" data-url="url" data-username="user">
+      <div class="c-login__close" id="js-login-close">
+        <svg fill="#FFFFFF" height="46" viewBox="0 0 24 24" width="46" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          <path d="M0 0h24v24H0z" fill="none"></path>
+        </svg>
+      </div>
+      <div class="c-signup__field">
+        <input type="text" name="username" required>
+        <label for="user">Uživateľské meno:</label>
+      </div>
+      <div class="c-signup__field">
+        <input type="password" name="password" required>
+        <label for="password">Heslo:</label>
+      </div>
+      <div class="c-signup__messages">
+        <div class="c-signup__message" id="js-input-invalid">
+          <svg fill="#8b0000" height="20" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+          <p>Uživateľské meno, alebo heslo boli zadané nesprávne.</p>
+        </div>
+      </div>
+      <input type="submit" value="Prihlásiť">
+    </form>
+  </div>
 
   <!-- <script src="/public/libs/handlebars-v4.0.5.js"></script> -->
   <!-- <script src="/public/libs/handlebars.runtime-v4.0.5.js"></script> -->
   <!-- <script src="/public/libs/animations.js"></script> -->
+  <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script> -->
   <script src="/public/js/AjaxToolkit.js"></script>
-  <script src="/public/js/login.js"></script>
+  <script src="/public/js/TweenMax.min.js"></script>
+  <!-- <script src="/public/js/login.js"></script> -->
   <script src="/public/js/main.js"></script>
+  <script src="/public/js/app.js"></script>
   <!-- <script src="/public/js/tmp.js"></script> -->
   <!-- <script src="/public/js/displayImg.js"></script> -->
 

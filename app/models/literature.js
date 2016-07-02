@@ -7,5 +7,6 @@ module.exports = mongoose.model('Literature', {
   date: String,
   category: String,
   body: [{ p: String, h: String }],
-  author: {firstName: String, lastName: String, authorId: String}
+  author: {firstName: String, lastName: String, authorId: String},
+  comments: [{body: String, name: String, date: Date }]
 });

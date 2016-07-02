@@ -16,10 +16,11 @@
 .c-form__field:first-of-type
   border-bottom: none
 
+.c-form__field:last-of-type
+  margin-bottom: $vertical-rhytm
 
-
-
-.c-form__label
+// .c-form__label
+.c-form__field > label
   opacity: 0.3
   position: absolute
   font-weight: bold
@@ -28,13 +29,20 @@
   // &:focus
     opacity: 0
 
-.c-form__name,
-.c-form__text
+.c-form__name, .c-form__text
   width: 100%
   border: 0
   padding: 1.2rem
   background: #eee
 
-  &:focus
-    outline: 0
-    background-color: white
+.c-form__field > input:focus,
+.c-form__field > textarea:focus
+  outline: 0
+  background-color: white
+.c-form__field > textarea:focus + label
+  opacity: 0
+
+.c-form__field > input:invalid,
+.c-form__field > textarea:invalid
+  box-shadow: none
+  outline: none

@@ -17,6 +17,6 @@ module.exports = (req, res) => {
 
   Promise.all(fns)
     .then( (articles)    => arrayMerge(articles))
-    .then( (artCombined) => res.render('articles', { pageTitle: "all", items: artCombined  }))
-    .catch( (err)        => res.send(err));
+    .then( (artCombined) => res.render('articles', { pageTitle: "All", items: artCombined, user: req.user }))
+    .catch((err)         => res.send(err));
 };
