@@ -20,7 +20,7 @@ const showCommentsPhilosophy = require('./routes/showCommentsPhilosophy');
 const showCommentsLiterature = require('./routes/showCommentsLiterature');
 // const user                   = require('./models/user');
 //passport + passport helpers
-const passport = require('passport');     
+const passport = require('passport');
 const check    = require('./middleware/check');
 
 //get first 3 documents from all articles collections
@@ -94,9 +94,24 @@ routes.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+
 // test
 
 routes.get('/literatura/:id1/:id2', (req, res) => console.log( "id1 : " + req.params.id1 + ' ' + "id2 : " + req.params.id2 ));
 
+//error routes
+
+routes.use((req, res, next) => {
+  res.type('text/plain');
+  res.status(404);
+  res.send('404 - Not Found');
+});
+
+routes.use((req, res, next) => {
+  console.error(err.stack);
+  res.type('text/plain');
+  res.status(500);
+  res.send('500 - Server Error');
+});
 
 module.exports = routes;

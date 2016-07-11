@@ -19,18 +19,18 @@ const Forms = (function() {
     function animOpen(el, el1) {
       const tl = new TimelineLite();
       tl.to(el, 1.4, {display: "flex", backgroundColor: "rgba(33, 150, 243, 0.5)" })
-        .from(el1, 0.6, {y: -600}, 0.2)
+        .from(el1, 0.6, {y: -650}, 0.2)
         .to(el1, 0.8, {boxShadow:"2px 2px 10px rgba(8, 89, 153, 0.8)"}, 0.6);
     }
 
     function animClose(el, el1, el2) {
       const tl = new TimelineLite();
-      tl.to(el, 1.6, {backgroundColor: "rgba(33, 150, 243, 0)" })
+      tl.to(el, 1.6, {backgroundColor: "rgba(33, 150, 243, 0)", display: "none" })
         .to(el1, 0.2, {display: "none", opacity: 0 }, 0)
         .to(el2, 0.4, {boxShadow: "2px 2px 10px rgba(9, 96, 165, 0)"}, 0)
-        .to(el2, 0.6, {y: -600}, 0.1)
-        .to(el2, 0, {y: 0})
-        .to(el, 0, {display: "none"});
+        .to(el2, 0.6, {y: -650}, 0.1)
+        .to(el2, 0, {y: 0});
+        // .to(el, 0, {display: "none"});
     };
 
     // HANDLERS

@@ -2,9 +2,7 @@ const Comments = (function(){
 "use strict";
 
 //DEPENDENCIES : AjaxToolkit
-
-// consts
-  // const btn       = document.getElementById('js-btn');
+// config
   const form      = document.getElementById('js-comment');
   const add       = document.getElementById('js-add');
   const comments  = document.getElementById('js-comments');
@@ -15,7 +13,6 @@ const Comments = (function(){
 //event Handlers
   //-->1
   const addHandler = (event) => {
-
     const src      = event.currentTarget;
     const url      = AjaxToolkit.makeUrl( "comments/", src);
     const formData = new FormData(form);
@@ -38,9 +35,8 @@ const Comments = (function(){
   //-->2
   const showHideHandler = (event) => {
 
-    const src = event.currentTarget;
-    console.log('hi');
-    const url = AjaxToolkit.makeUrl( "comments/", src);
+    const src      = event.currentTarget;
+    const url      = AjaxToolkit.makeUrl( "comments/", src);
     const hasClass = comments.classList.contains('is-hidden');
 
     comments.classList.toggle('is-hidden');
@@ -59,8 +55,7 @@ const Comments = (function(){
 // attach event listeners
    const formListener = () => {
       if (form !== null) {
-      console.log('it exists!');
-      form.addEventListener('submit', addHandler, false);
+       form.addEventListener('submit', addHandler, false);
       }
     };
 

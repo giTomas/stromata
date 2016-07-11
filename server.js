@@ -44,6 +44,8 @@ auth(passport);                     ///??!!!!
 app.use( '/public', express.static(path.join(__dirname + '/public')));
 
 //connect ROUTES to app------------------------------------------------------------------------
-app.use('/', routes)
+app.use('/', routes);
+
+
 
 app.listen(port, ip, () => console.log('App is listening on port ' + port + ' ip: ' + ip));
